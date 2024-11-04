@@ -2,11 +2,12 @@
 
 import ReloadButton from './ReloadButton';
 
-let serverCount = 0;
+interface ServerCounterProps {
+    initialCount: number;
+}
 
-export default function ServerCounter() {
-  serverCount += 1;
-
+export default function ServerCounter({ initialCount }: ServerCounterProps) {
+  const serverCount = initialCount + 1;
   const serverCounterText = process.env.SERVER_COUNTER_TEXT;
 
   return (
@@ -15,7 +16,7 @@ export default function ServerCounter() {
       <p className="text-3xl font-bold text-blue-600 mb-4">{serverCount}</p>
       <p className="text-sm text-green-500 mb-2">{serverCounterText}</p>
       <p className="text-sm text-gray-500 mb-4">（リロードすると増加します）</p>
-      <ReloadButton />
+      <ReloadButton serverCount={serverCount} />
     </div>
   );
 }
