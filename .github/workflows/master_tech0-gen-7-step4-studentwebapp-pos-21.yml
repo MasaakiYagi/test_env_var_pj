@@ -23,9 +23,7 @@ jobs:
 
       - name: Set environment variables from Secrets
         run: |
-          echo "SERVER_COUNTER_INITIAL=${{ secrets.SERVER_COUNTER_INITIAL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_CLIENT_COUNTER_INITIAL=${{ secrets.NEXT_PUBLIC_CLIENT_COUNTER_INITIAL }}" >> $GITHUB_ENV
-          echo "SERVER_COUNTER_TEXT=${{ secrets.SERVER_COUNTER_TEXT }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_CLIENT_COUNTER_TEXT=${{ secrets.NEXT_PUBLIC_CLIENT_COUNTER_TEXT }}" >> $GITHUB_ENV
 
       - name: npm install, build, and test
