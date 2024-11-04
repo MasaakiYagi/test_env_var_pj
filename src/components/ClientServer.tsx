@@ -2,10 +2,12 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function ClientCounter() {
-  const [count, setCount] = useState(0);
+  // NEXT_PUBLIC_CLIENT_INITIAL を初期値として使用
+  const initialCount = parseInt(process.env.NEXT_PUBLIC_CLIENT_COUNTER_INITIAL || '0', 10);
+  const [count, setCount] = useState(initialCount);
 
   return (
     <div className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md w-48 mx-auto my-4 text-center">

@@ -7,7 +7,13 @@ interface ServerCounterProps {
 }
 
 export default function ServerCounter({ initialCount }: ServerCounterProps) {
-  const serverCount = initialCount + 1;
+  // SERVER_COUNTER_INITIAL 環境変数を取得し、数値に変換
+  const initialIncrement = parseInt(process.env.SERVER_COUNTER_INITIAL || '0', 10);
+
+  // initialCount が -1 の場合のみ SERVER_COUNTER_INITIAL を加算
+  const serverCount = initialCount === -1 ? initialCount + initialIncrement + 1 : initialCount + 1;
+
+  // サーバー側の環境変数をテキストとして表示
   const serverCounterText = process.env.SERVER_COUNTER_TEXT;
 
   return (
